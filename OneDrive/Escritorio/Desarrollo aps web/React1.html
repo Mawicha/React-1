@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<HTML>
+ <HEAD>
+    <meta charset="utf-8">
+     <TITLE>Hello</TITLE>
+ </HEAD>   
+ <body>
+     <style>
+         .title {
+             color: blue;
+         }
+     </style>
+     <div id="root"></div>
+     <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+     <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+     <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+     <script type="text/babel">
+        const rootElement = document.getElementById('root');
+        class Welcome extends React.Component {
+            constructor(props) {
+                super(props); 
+                    this.state = {
+                        total: 0,
+                    }
+                    this.countUp = this.countUp.bind(this);
+                    this.countDown = this.countDown.bind(this);
+            }
+
+            countUp() {
+                this.setState({
+                    ...this.state,
+                    total: this.state.total + 1
+                });
+                console.log('count up');
+            }
+
+            countDown() {
+                this.setState({
+                    ...this.state,
+                    total: this.state.total - 1
+                });
+                console.log('count down');
+            }
+
+        render() {
+            
+                return (
+                    <h1 className="title" >
+                    <button type="button" onClick={this.countUp}>
+                        count down
+                    </button>
+                    Total: {this.state.total}
+                    <button type="button" onClick={this.countDown}>
+                        count up
+                    </button>
+                    </h1>
+                );
+            }
+        }
+        ReactDOM.render(
+            <Welcome name="Maria" color="pink" number={1000}/>,
+            rootElement
+        )
+     </script>
+ </body>
+</HTML>
